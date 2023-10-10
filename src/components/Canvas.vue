@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { onMounted, ref, type Ref } from "vue";
+const canvas = ref<HTMLCanvasElement>();
+const x = ref(0);
+const y = ref(0);
+
+function drawLine(x1: number, y1: number, x2: number, y2: number): any {
+  const ctx = canvas.value?.getContext("2d");
+  ctx?.beginPath();
+  ctx!.strokeStyle = "black";
+  ctx!.lineWidth = 2;
+  ctx?.moveTo(x1, y1);
+  ctx?.lineTo(x2, y2);
+  ctx?.stroke();
+  ctx?.closePath();
+}
+function draw(e: MouseEvent) {
+  drawLine(x.value, y.value, e.offsetX, e.offsetY),
+    (x.value = e.offsetX),
+    (y.value = e.offsetY);
+}
+onMounted(() => {});
+</script>
+<template>
+  <div>
+    <canvas ref="canvas" id="myCanvas" @mousemove="draw" />
+  </div>
+</template>
+<style>
+div {
+  width: 100vw;
+  height: 50vh;
+}
+canvas {
+  border: 1px solid;
+}
+</style>
