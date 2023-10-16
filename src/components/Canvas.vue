@@ -35,7 +35,15 @@ function draw(e: MouseEvent) {
     (x.value = e.offsetX),
     (y.value = e.offsetY);
 }
-onMounted(() => {});
+function downloadImage(url: string) {
+  let canvasUrl = canvas.value?.toDataURL(url);
+  const createEl: HTMLAnchorElement = document.createElement("a");
+  createEl.href = canvasUrl!;
+  createEl.download = "download-image";
+
+  createEl.click();
+  createEl.remove();
+}
 </script>
 <template>
   <div>
