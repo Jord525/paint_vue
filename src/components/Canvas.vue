@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from "vue";
+//@ts-ignore
+import downloadButton from "./downloadButton.vue";
+import { ref } from "vue";
 const canvas = ref<HTMLCanvasElement>();
-const x = ref(0);
-const y = ref(0);
+const x = ref<number | undefined>(undefined);
+const y = ref<number | undefined>(undefined);
 
 function drawLine(x1: number, y1: number, x2: number, y2: number): any {
   const ctx = canvas.value?.getContext("2d");
@@ -60,10 +62,6 @@ function downloadImage(url: string) {
   </div>
 </template>
 <style>
-div {
-  width: 100vw;
-  height: 50vh;
-}
 canvas {
   border: 2px solid gray;
   background-color: white;
