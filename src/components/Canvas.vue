@@ -47,7 +47,16 @@ function downloadImage(url: string) {
 </script>
 <template>
   <div>
-    <canvas ref="canvas" id="myCanvas" @mousemove="draw" />
+    <canvas
+      width="500"
+      height="300"
+      ref="canvas"
+      id="myCanvas"
+      @mousemove="draw"
+    />
+    <a style="cursor: pointer" @click="downloadImage('image/png')">
+      <downloadButton />
+    </a>
   </div>
 </template>
 <style>
@@ -56,6 +65,9 @@ div {
   height: 50vh;
 }
 canvas {
-  border: 1px solid;
+  border: 2px solid gray;
+  background-color: white;
+  border-radius: 10px;
+  cursor: crosshair;
 }
 </style>
